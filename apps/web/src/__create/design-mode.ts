@@ -1,20 +1,18 @@
 // Lokaler Ersatz für den fehlenden Shared-Import
-export type GetStyleInfo = () => {
-  isDesignMode: boolean;
-  [key: string]: any;
+export type GetStyleInfo = (resolved: { element: any }) => {
+  className: string;
+  styles: Record<string, string> | null;
 };
 
-export function initDesignMode() {
-  // Dummy-Funktion für das Deployment
-  return null;
+export function initDesignMode(callback: any) {
+  // Gibt eine leere Funktion zurück, damit reselect() weiter unten nicht abstürzt
+  return () => {};
 }
 
 /**
  * Web design mode — extracts Tailwind className and computed styles
  * from DOM elements.
  */
-
-
 
 function rgbToHex(rgb: string): string {
   const match = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)$/);
@@ -79,3 +77,9 @@ if (import.meta.hot) {
     reselect();
   });
 }
+
+
+
+
+
+
