@@ -1,9 +1,20 @@
+// Lokaler Ersatz für den fehlenden Shared-Import
+export type GetStyleInfo = () => {
+  isDesignMode: boolean;
+  [key: string]: any;
+};
+
+export function initDesignMode() {
+  // Dummy-Funktion für das Deployment
+  return null;
+}
+
 /**
  * Web design mode — extracts Tailwind className and computed styles
  * from DOM elements.
  */
 
-import { type GetStyleInfo, initDesignMode } from '../../../../shared/design-mode';
+
 
 function rgbToHex(rgb: string): string {
   const match = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)$/);
